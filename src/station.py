@@ -21,7 +21,6 @@ class DigiTrafficStation:
         stops = []
         for n in data:
             stops.append(n['name'])
-        print(stops)
         return stops
 
     def get_query(self, query):
@@ -29,5 +28,3 @@ class DigiTrafficStation:
         return response.text
 
 
-station_info = DigiTrafficStation()
-station_info.get_stops()
