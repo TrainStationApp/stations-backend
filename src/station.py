@@ -9,7 +9,20 @@ class DigiTrafficStation:
         self.headers = {'Content-Type': 'application/graphql'}
 
     def get_stops(self):
-        pass
+        stopnum = '4040'
+        query = ("{stops(name: \"%s\") {"
+                 "   id"
+                 "   name"
+                 "   wheelchairBoarding"
+                 "   }"
+                 "}") % (stopnum)
+        data = json.loads(self.get_query(query))
+        data = data['data']['stops']
+        stops = []
+        for n in data:
+            stops.append(n['name'])
+        print(stops)
+        return stops
 
     def get_query(self, query):
         response = requests.post(self.url, data=query, headers=self.headers)
