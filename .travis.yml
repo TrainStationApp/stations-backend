@@ -5,7 +5,10 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install coverage
-  - export PYTHONPATH=$(pwd)/src/
+  -
+
+script:
+  - coverage run -m --branch --source=src --omit=src/tests/* unittest discover -s src/tests
 
 
 
